@@ -1,0 +1,27 @@
+<h1 class="text-center">Tasks to do: </h1>
+
+<ul class="list-unstyled">
+  <% @tasks.each do |task| %>
+   <div class="row text-center">
+    <li>
+      <h3>
+        <%= link_to edit_task_path(task) do %>
+          <% if task.completed %>
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+          <% else %>
+            <i class="fa fa-square-o" aria-hidden="true"></i>
+          <% end %>
+        <%= task.title %>
+        <% end %>
+      </h3>
+
+        <%= link_to "Edit", edit_task_path(task), method: :get %>
+        <%= link_to "Delete", edit_task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  </div>
+  <% end %>
+</ul>
+
+<hr>
+
+<p class="text-center"><%= link_to "Add a task", new_task_path %></p>
